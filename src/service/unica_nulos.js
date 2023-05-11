@@ -31,7 +31,7 @@ async function insereEmail(client){
 async function insereTelefone(client){
     console.log("inserindo telefone");
     const sql = "insert into risk_blacklist_unica_nulos (telefone) values ($1)";
-    const telefone = [faker.phone.phoneNumber().replace(/[-)(\s]/g, "")];
+    const telefone = [faker.phone.phoneNumber().replace(/[^0-9]/g, "")];
     return await insereNaBase(client, sql, telefone);
 }
 
