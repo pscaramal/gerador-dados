@@ -1,6 +1,8 @@
 import yargs from 'yargs/yargs';
 import insereUnicaNulos from './service/unica_nulos.js';
 import insereUnicaNulosIndex from './service/unica_nulos_index.js';
+import insereUnicaNormalizada from './service/unica_normalizada.js';
+import insereMultiTabela from './service/multi_tabela.js';
  
 let argv = yargs(process.argv.slice(2)).argv;
 
@@ -19,6 +21,12 @@ async function insereDados(quantidade, cenario){
         case 'unica_nulos_index':
             await insereUnicaNulosIndex(quantidade);
             break;
+        case 'unica_normalizada':
+            await insereUnicaNormalizada(quantidade);
+            break;
+        case 'multi_tabela':
+            await insereMultiTabela(quantidade);
+            break;    
         default:
             console.log('cenario inválido: ' + cenario);
             process.exit(1);
